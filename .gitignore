@@ -1,0 +1,7 @@
+node_modules/
+ssh-tools/node_modules/
+ssh-tools/.claude-plugin/types/
+*.bak
+*.log
+.claude/ssh-hosts.local.json
+ssh-tools/tsconfig.json

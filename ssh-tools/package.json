@@ -1,0 +1,19 @@
+{
+  "name": "ssh-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SSH tools mod for Claude Code: exec, upload, download, tunnels, per-project and global hosts.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild helper/src/index.mjs --bundle --platform=node --format=cjs --target=node18 --external:*.node --external:cpu-features --outfile=helper/ssh-helper.cjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "check": "npm run build && npm run typecheck"
+  },
+  "dependencies": {
+    "ssh2": "^1.17.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

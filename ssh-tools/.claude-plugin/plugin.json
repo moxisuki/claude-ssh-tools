@@ -1,0 +1,31 @@
+{
+  "name": "ssh-tools",
+  "version": "0.1.0",
+  "description": "SSH hosts, commands, SFTP transfers and tunnels for Claude Code. Per-project and global host files, encrypted credentials, password/key/agent authentication, scanned config and one-command diagnostics.",
+  "author": {
+    "name": "WREN"
+  },
+  "userConfig": {
+    "nodeBin": {
+      "type": "string",
+      "title": "Node binary",
+      "description": "Node 18+ used to run the bundled ssh helper. Empty uses node on PATH.",
+      "default": ""
+    },
+    "defaultTimeoutSec": {
+      "type": "number",
+      "title": "Default command timeout (s)",
+      "description": "Timeout for ssh_exec when the call does not give one. Clamped to 1-590.",
+      "default": 120,
+      "min": 1,
+      "max": 590
+    },
+    "allowCmdSecrets": {
+      "type": "boolean",
+      "title": "Allow cmd: secret references",
+      "description": "Let a host read its password from a shell command (cmd:...). Off by default because it executes local commands.",
+      "default": false,
+      "sensitive": true
+    }
+  }
+}
