@@ -9,14 +9,14 @@ commands, and runs a bundled Node helper that speaks SSH through [`ssh2`](https:
 ## Install
 
 ```
-/plugin install ssh-tools --marketplace <owner>/<repo>
+/plugin install ssh-tools --marketplace moxisuki/claude-ssh-tools
 ```
 
 or, from a clone:
 
 ```
-/plugin marketplace add <owner>/<repo>
-/plugin install ssh-tools@<marketplace>
+/plugin marketplace add moxisuki/claude-ssh-tools
+/plugin install ssh-tools@claude-ssh-tools
 ```
 
 Local development:

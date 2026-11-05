@@ -5,7 +5,7 @@
 ## 安装
 
 ```
-/plugin install ssh-tools --marketplace <owner>/<repo>
+/plugin install ssh-tools --marketplace moxisuki/claude-ssh-tools
 ```
 
 本地开发：`claude --plugin-dir ssh-tools`
