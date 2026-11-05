@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "SSH hosts, commands, SFTP transfers and tunnels for Claude Code. Per-project and global host files, encrypted credentials, password/key/agent authentication, scanned config and one-command diagnostics.",
   "author": {
-    "name": "WREN"
+    "name": "moxisuki",
+    "url": "https://github.com/moxisuki"
   },
   "userConfig": {
     "nodeBin": {
@@ -27,5 +28,7 @@
       "default": false,
       "sensitive": true
     }
-  }
+  },
+  "homepage": "https://github.com/moxisuki/claude-ssh-tools",
+  "repository": "https://github.com/moxisuki/claude-ssh-tools"
 }

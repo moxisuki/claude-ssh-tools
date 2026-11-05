@@ -27,4 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Permission gate through `$.tool.check`, with an interactive confirmation fallback.
 - `.gitignore` check when writing the project host file.
 
-[0.1.0]: https://github.com/OWNER/ssh-tools/releases/tag/v0.1.0
+[0.1.0]: https://github.com/moxisuki/claude-ssh-tools/releases/tag/v0.1.0

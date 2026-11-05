@@ -1,14 +1,20 @@
 {
   "name": "claude-ssh-tools",
   "owner": {
-    "name": "moxisuki"
+    "name": "moxisuki",
+    "url": "https://github.com/moxisuki"
   },
   "description": "SSH for Claude Code: hosts, exec, transfers, tunnels, background jobs.",
   "plugins": [
     {
       "name": "ssh-tools",
       "source": "./ssh-tools",
-      "description": "SSH hosts in project and global scopes, encrypted credentials, and ssh2-based exec, resumable transfers, tunnels, background jobs and a live pane."
+      "description": "SSH hosts in project and global scopes, encrypted credentials, and ssh2-based exec, resumable transfers, tunnels, background jobs and a live pane.",
+      "author": {
+        "name": "moxisuki"
+      },
+      "homepage": "https://github.com/moxisuki/claude-ssh-tools",
+      "category": "developer-tools"
     }
   ]
 }

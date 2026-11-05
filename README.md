@@ -1,49 +1,73 @@
-# Claude-Mod-ssh
+# claude-ssh-tools
 
-[ssh-tools](ssh-tools/README.md) — a Claude Code mod that gives the model SSH: commands, transfers, tunnels, background jobs.
+**SSH for Claude Code** — hosts, commands, transfers, tunnels and background jobs, as one installable mod.
 
-## 安装
+[简体中文](README.zh-CN.md) · [Plugin docs](ssh-tools/README.md)
+
+## Install
 
 ```
 /plugin install ssh-tools --marketplace moxisuki/claude-ssh-tools
 ```
 
-本地开发：`claude --plugin-dir ssh-tools`
+Or add the marketplace first, then install by name:
 
-需要 Node 18+（helper 已打包，无需 npm install），Claude Code ≥ 2.1.318。
+```
+/plugin marketplace add moxisuki/claude-ssh-tools
+/plugin install ssh-tools@claude-ssh-tools
+```
 
-## 工具
+Requirements: **Node 18+** and Claude Code **2.1.318+**. The SSH helper ships pre-bundled, so there is
+nothing to `npm install` — and nothing to publish to npm.
 
-| 工具 | 用途 |
+## What you get
+
+| Tool | What it does |
 |---|---|
-| `list` / `host` / `wizard` | 主机清单、增删改、创建向导 |
-| `exec` | 执行命令；支持多主机、分组、`pty`、`sudo` |
-| `run` / `logs` / `kill` | 后台任务：启动、增量读日志、终止 |
-| `read` | 直接读远端文件，不下载 |
-| `put` / `get` | 多文件上传下载，断点续传，进度显示 |
-| `tunnel` | 本地 / 远程 / SOCKS5 转发 |
-| `doctor` | 环境自检 |
+| `list` | Hosts with scope (project / global / ssh-config), auth method, group |
+| `host` | Save, remove or trust a host |
+| `wizard` | Create a host: validates, asks where to save, keeps it out of git |
+| `exec` | Run a command — one host, several in parallel, or a whole group; `pty`, `sudo` |
+| `run` / `logs` / `kill` | Background jobs: start, follow output incrementally, stop |
+| `read` | Read a remote file without downloading it |
+| `put` / `get` | Multi-file upload and download, resumable, with live progress |
+| `tunnel` | Local (`-L`), remote (`-R`) and dynamic SOCKS5 (`-D`) forwarding |
+| `doctor` | Environment check: node, keystore, config files, pinned keys |
 
-`/ssh` 打开面板（主机 · 隧道 · 任务），`/ssh-doctor` 自检。
+Slash commands: `/ssh` opens a pane with hosts, tunnels and jobs; `/ssh-doctor` runs the check.
 
-## 要点
+## Hosts and secrets
 
-- 主机分项目级 `.claude/ssh-hosts.local.json` 与全局 `~/.claude/ssh-hosts.json`，项目级自动检查 `.gitignore`
-- 密码 / 口令用 DPAPI、Keychain、libsecret 加密落盘，或以 `env:` / `file:` / `cmd:` 引用
-- 认证走 ssh2：password、key、agent、keyboard-interactive，不依赖系统 ssh
-- 主机指纹首次连接固定，之后强校验
+| Scope | File | Committed |
+|---|---|---|
+| project | `.claude/ssh-hosts.local.json` | No — checked against `.gitignore` |
+| global | `~/.claude/ssh-hosts.json` | Your call |
+| ssh-config | `~/.ssh/config` | Read-only |
 
-## 开发
+Project entries override global ones; a shadowed global entry is marked in `list`.
+Passwords and passphrases are stored as references — DPAPI on Windows, Keychain on macOS, libsecret on
+Linux — or as `env:`, `file:` or opt-in `cmd:`. Plaintext is encrypted before it reaches disk.
+
+Authentication is ssh2 itself: password, key, agent and keyboard-interactive all work headless, with no
+local `ssh` binary. Host keys are pinned on first connect and verified afterwards.
+
+## Security
+
+A mod that answers a tool call bypasses the engine's permission dialog, so ssh-tools asks
+`$.tool.check` before every action, honours `deny`, and turns `ask` into a confirmation. Secrets travel
+to the helper on stdin, never in argv or environment variables.
+
+## Development
 
 ```bash
 cd ssh-tools
 npm install
-npm run build          # 打包 helper
-npm run typecheck
+npm run build        # bundle helper/src/index.mjs into helper/ssh-helper.cjs
+npm run typecheck    # needs the types the engine lays at .claude-plugin/types
 claude plugin validate .
 claude plugin test .
 ```
 
-## 许可
+## License
 
 MIT

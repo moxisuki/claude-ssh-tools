@@ -1,10 +1,13 @@
 # ssh-tools
 
-SSH for Claude Code: run commands, move files, and open tunnels on machines you already trust —
-with hosts kept per project or globally, credentials encrypted at rest, and no local `ssh` binary required.
+**SSH for Claude Code** — run commands, move files, and open tunnels on machines you already trust,
+with hosts kept per project or globally, credentials encrypted at rest, and no local `ssh` binary.
 
-A Claude Code **mod** (a hooks-module plugin). It registers eight model-callable tools and two slash
-commands, and runs a bundled Node helper that speaks SSH through [`ssh2`](https://github.com/mscdex/ssh2).
+[English](README.md) · [简体中文](../README.zh-CN.md) · [Repository](../README.md)
+
+A Claude Code **mod** (a hooks-module plugin) inside [claude-ssh-tools](https://github.com/moxisuki/claude-ssh-tools).
+It registers eleven model-callable tools and two slash commands, and runs a bundled Node helper that
+speaks SSH through [`ssh2`](https://github.com/mscdex/ssh2).
 
 ## Install
 
