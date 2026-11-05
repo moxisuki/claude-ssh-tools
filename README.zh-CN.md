@@ -1,5 +1,7 @@
 # claude-ssh-tools
 
+![ssh-tools](assets/hero.png)
+
 **给 Claude Code 的 SSH** —— 主机、命令、传输、隧道、后台任务，一个可安装的 mod。
 
 [English](README.md) · [插件文档](ssh-tools/README.md)

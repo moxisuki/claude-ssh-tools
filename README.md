@@ -1,5 +1,7 @@
 # claude-ssh-tools
 
+![ssh-tools](assets/hero.png)
+
 **SSH for Claude Code** — hosts, commands, transfers, tunnels and background jobs, as one installable mod.
 
 [简体中文](README.zh-CN.md) · [Plugin docs](ssh-tools/README.md)
